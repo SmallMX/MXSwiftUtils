@@ -1,6 +1,6 @@
 import UIKit
 
-struct MXSwiftUtils {
+public struct MXSwiftUtils {
     var text = "Hello, World!"
     
     /****跳转到应用系统设置 *****/
