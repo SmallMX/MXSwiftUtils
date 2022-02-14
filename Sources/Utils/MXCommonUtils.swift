@@ -10,33 +10,45 @@ import UIKit
 public struct MXCommonUtils {
     var text = "Hello, World!"
     
-    /****跳转到应用系统设置 *****/
+    ///跳转到应用系统设置
     public static func openSystemSetup() {
         let url = URL(string: UIApplication.openSettingsURLString)
         if UIApplication.shared.canOpenURL(url!) {
             UIApplication.shared.open(url!, options: Dictionary(), completionHandler: nil)
         }
     }
+    ///打开链接
+    static func openUrl(urlStr: String) {
+        guard let url = URL(string: urlStr) else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: Dictionary(), completionHandler: nil)
+        }
+    }
     
-    /**************获取设备信息**************/
+    static func getRootViewController(viewController: UIViewController) -> UIViewController {
+        let vc: UIViewController
+        if let nav = viewController as? UINavigationController {
+            vc = nav.viewControllers.first!
+        }else {
+            vc = viewController
+        }
+        return vc
+    }
     
+    ///获取App版本号
     public static func getAppVersion() -> String {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
     }
     
+    ///获取系统版本
     public static func getSystemVersion() -> String {
         return UIDevice.current.systemVersion
     }
-    
-    public static func getSystemModel() -> String {
+    ///获取设备类型
+    public static func getDeviceModel() -> String {
         return UIDevice.current.model
-    }
-    
-    ///手机号正则匹配
-    public static func verifyPhoneNumber(phone: String) -> Bool {
-        let phoneRegex: String = "^(1[3-9])\\d{9}$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        return phoneTest.evaluate(with: phone)
     }
     
     /// 检测字符串是否为空
