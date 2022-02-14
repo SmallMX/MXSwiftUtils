@@ -1,6 +1,13 @@
+//
+//  File.swift
+//  
+//
+//  Created by 刘明昕 on 2022/2/14.
+//
+
 import UIKit
 
-public struct MXSwiftUtils {
+public struct MXCommonUtils {
     var text = "Hello, World!"
     
     /****跳转到应用系统设置 *****/
@@ -44,3 +51,4 @@ public struct MXSwiftUtils {
     
     
 }
+
