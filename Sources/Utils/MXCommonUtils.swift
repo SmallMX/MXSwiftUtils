@@ -18,7 +18,7 @@ public struct MXCommonUtils {
         }
     }
     ///打开链接
-    static func openUrl(urlStr: String) {
+    public static func openUrl(urlStr: String) {
         guard let url = URL(string: urlStr) else {
             return
         }
@@ -27,7 +27,7 @@ public struct MXCommonUtils {
         }
     }
     
-    static func getRootViewController(viewController: UIViewController) -> UIViewController {
+    public static func getRootViewController(viewController: UIViewController) -> UIViewController {
         let vc: UIViewController
         if let nav = viewController as? UINavigationController {
             vc = nav.viewControllers.first!
